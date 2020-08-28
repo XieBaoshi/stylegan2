@@ -62,7 +62,7 @@ def training_schedule(
     D_lrate_base            = 0.002,    # Learning rate for the discriminator.
     D_lrate_dict            = {},       # Resolution-specific overrides.
     lrate_rampup_kimg       = 0,        # Duration of learning rate ramp-up.
-    tick_kimg_base          = 4,        # Default interval of progress snapshots.
+    tick_kimg_base          = 1,        # Default interval of progress snapshots.
     tick_kimg_dict          = {8:28, 16:24, 32:20, 64:16, 128:12, 256:8, 512:6, 1024:4}): # Resolution-specific overrides.
 
     # Initialize result dict.
