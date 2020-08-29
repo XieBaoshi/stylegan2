@@ -53,7 +53,7 @@ def training_schedule(
     lod_initial_resolution  = None,     # Image resolution used at the beginning.
     lod_training_kimg       = 600,      # Thousands of real images to show before doubling the resolution.
     lod_transition_kimg     = 600,      # Thousands of real images to show when fading in new layers.
-    minibatch_size_base     = 32,       # Global minibatch size.
+    minibatch_size_base     = 12,       # Global minibatch size.
     minibatch_size_dict     = {},       # Resolution-specific overrides.
     minibatch_gpu_base      = 4,        # Number of samples processed at a time by one GPU.
     minibatch_gpu_dict      = {},       # Resolution-specific overrides.
@@ -63,7 +63,7 @@ def training_schedule(
     D_lrate_dict            = {},       # Resolution-specific overrides.
     lrate_rampup_kimg       = 0,        # Duration of learning rate ramp-up.
     tick_kimg_base          = 1,        # Default interval of progress snapshots.
-    tick_kimg_dict          = {4: 16, 8:14, 16:12, 32:10, 64:8, 128:6, 256:4, 512:3, 1024:2}): # Resolution-specific overrides.
+    tick_kimg_dict          = {2:8, 4:7, 8:6, 16:5, 32:4, 64:3, 128:2, 256:2, 512:1}): # Resolution-specific overrides.
 
     # Initialize result dict.
     s = dnnlib.EasyDict()
@@ -133,8 +133,8 @@ def training_loop(
     mirror_augment          = False,    # Enable mirror augment?
     mirror_augment_v        = False,    # Enable mirror augment vertically?
     drange_net              = [-1,1],   # Dynamic range used when feeding image data to the networks.
-    image_snapshot_ticks    = 50,       # How often to save image snapshots? None = only save 'reals.png' and 'fakes-init.png'.
-    network_snapshot_ticks  = 50,       # How often to save network snapshots? None = only save 'networks-final.pkl'.
+    image_snapshot_ticks    = 1,       # How often to save image snapshots? None = only save 'reals.png' and 'fakes-init.png'.
+    network_snapshot_ticks  = 4,       # How often to save network snapshots? None = only save 'networks-final.pkl'.
     save_tf_graph           = False,    # Include full TensorFlow computation graph in the tfevents file?
     save_weight_histograms  = False,    # Include weight histograms in the tfevents file?
     resume_pkl              = 'latest',     # Network pickle to resume training from, None = train from scratch.
