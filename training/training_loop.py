@@ -89,7 +89,7 @@ def training_loop(
     run_dir                 = '.',      # Output directory.
     training_set_kwargs     = {},       # Options for training set.
     data_loader_kwargs      = {},       # Options for torch.utils.data.DataLoader.
-    G_kwargs                = {},       # Options for generator network.
+    G_kwargs                = { "num_layers": 3 },       # Options for generator network.
     D_kwargs                = {},       # Options for discriminator network.
     G_opt_kwargs            = {},       # Options for generator optimizer.
     D_opt_kwargs            = {},       # Options for discriminator optimizer.
